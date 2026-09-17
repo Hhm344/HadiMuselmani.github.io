@@ -1,177 +1,784 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Hadi Muselmani Portfolio</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hadi Muselmani | Computer Science, Security & Machine Learning</title>
+<meta name="description" content="Hadi Muselmani, final-year Computer Science student at Beirut Arab University. Projects in machine learning, cybersecurity, cloud security, databases and algorithms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F3; --surface:#FFFFFF; --ink:#16263A; --muted:#566476;
+  --line:#CFD8DE; --sea:#0B7285; --sea-ink:#FFFFFF; --sea-soft:#D6ECEF;
+  --cedar:#2F7A4B; --warn:#B4442B; --warn-soft:#F6DFD8; --ok-soft:#DCEFE2;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1B26; --surface:#162635; --ink:#E6EDF2; --muted:#9AAAB8;
+    --line:#2A3D4F; --sea:#4FC3D4; --sea-ink:#0F1B26; --sea-soft:#17394A;
+    --cedar:#6CC58E; --warn:#F08A6C; --warn-soft:#3A2420; --ok-soft:#1B3526;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1B26; --surface:#162635; --ink:#E6EDF2; --muted:#9AAAB8;
+  --line:#2A3D4F; --sea:#4FC3D4; --sea-ink:#0F1B26; --sea-soft:#17394A;
+  --cedar:#6CC58E; --warn:#F08A6C; --warn-soft:#3A2420; --ok-soft:#1B3526;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;transition:background .25s,color .25s}
+a{color:var(--sea);text-underline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:6px}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Top bar */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--sea);width:0;z-index:30}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--ink)}
+.menu{display:flex;gap:4px;list-style:none}
+.menu a{color:var(--muted);text-decoration:none;font-weight:500;padding:6px 12px;border-radius:999px}
+.menu a:hover{color:var(--ink)}
+.menu a.active{background:var(--sea-soft);color:var(--ink)}
+.icon-btn{background:var(--surface);border:1px solid var(--line);border-radius:999px;width:40px;height:40px;display:grid;place-items:center;font-size:1.05rem}
+.bar-right{display:flex;gap:8px;align-items:center}
+.burger{display:none}
+
+/* Hero */
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.hello{color:var(--muted);font-size:1.05rem;margin-bottom:8px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(3rem,8vw,5.4rem);line-height:.95;letter-spacing:-.03em;word-break:break-word}
+h1 .letter{display:inline-block;transition:color .2s}
+h1 .letter.off{color:var(--sea)}
+.typed{font-size:1.3rem;margin-top:18px;min-height:2em}
+.typed b{color:var(--sea);font-weight:600}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--sea);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.primary{background:var(--sea);border-color:var(--sea);color:var(--sea-ink)}
+.btn:hover{transform:translateY(-1px)}
+.place{margin-top:22px;color:var(--muted);font-size:.95rem}
+
+.lock{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.lock h2{font-family:var(--display);font-size:1.15rem;margin-bottom:4px}
+.lock p{color:var(--muted);font-size:.93rem}
+.lock .out{font-family:var(--mono);font-size:1.5rem;margin:18px 0 10px;letter-spacing:.02em;word-break:break-word}
+.lock input[type=range]{width:100%;accent-color:var(--sea)}
+.lock .row{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted)}
+
+/* Counters */
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.counters div{background:var(--surface);padding:22px}
+.counters b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1}
+.counters span{color:var(--muted);font-size:.9rem}
+
+/* Sections */
+section.block{padding:80px 0 0}
+h2.title{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.4rem);letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--muted);max-width:62ch;margin-bottom:28px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+.about .lead{font-size:1.2rem;max-width:58ch}
+.about .lead + p{margin-top:14px;color:var(--muted);max-width:60ch}
+.looking{background:var(--sea-soft);border-radius:16px;padding:22px}
+.looking h3{font-family:var(--display);font-size:1.1rem;margin-bottom:8px}
+.looking ul{padding-left:18px}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-weight:500;font-size:.92rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.search{width:100%;max-width:380px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;margin-bottom:8px}
+.count{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+
+/* Projects */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--sea)}
+.card.featured{grid-column:1 / -1;border-left:6px solid var(--sea)}
+.card[hidden]{display:none}
+.card .area{color:var(--cedar);font-weight:600;font-size:.85rem}
+.card h3{font-family:var(--display);font-size:1.3rem;line-height:1.25;margin:4px 0 8px}
+.card.featured h3{font-size:1.7rem}
+.card p{color:var(--muted)}
+.stats{display:flex;gap:32px;margin:16px 0 4px;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--display);font-size:2rem;line-height:1;color:var(--sea)}
+.stats small{color:var(--muted);font-size:.85rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:6px;padding:2px 9px;font-size:.8rem;color:var(--muted)}
+.card-foot{margin-top:auto;padding-top:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.more{background:none;border:0;color:var(--ink);font-weight:600;padding:0;display:inline-flex;gap:6px;align-items:center}
+.more .chev{transition:transform .2s;display:inline-block}
+.more[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.details{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
+.details.open{grid-template-rows:1fr}
+.details > div{overflow:hidden}
+.details ul{padding:12px 0 0 20px}
+.details li{margin-bottom:4px}
+.gh{font-weight:600}
+.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+
+/* Lab */
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.tab{background:none;border:0;padding:10px 16px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--sea)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.panel[hidden]{display:none}
+.panel label{display:block;font-weight:600;margin-bottom:6px}
+textarea{width:100%;min-height:120px;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:15px/1.5 var(--mono);resize:vertical}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
+.controls input[type=number]{width:72px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit}
+.result{margin-top:10px;padding:14px;border-radius:10px;background:var(--paper);font-family:var(--mono);font-size:15px;min-height:52px;white-space:pre-wrap;word-break:break-word}
+.note{color:var(--muted);font-size:.88rem;margin-top:10px}
+.meter{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:14px 0 8px}
+.meter i{display:block;height:100%;width:0;background:var(--cedar);transition:width .4s,background .4s}
+.verdict{font-family:var(--display);font-size:1.3rem;font-weight:700}
+.reasons{list-style:none;margin-top:10px}
+.reasons li{padding:6px 10px;border-radius:8px;margin-bottom:6px;background:var(--warn-soft);font-size:.95rem}
+.reasons li.good{background:var(--ok-soft)}
+.samples{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.skill-group h3{font-size:1rem;margin-bottom:10px}
+.skill-group .chips{display:flex;flex-wrap:wrap;gap:6px}
+.skill{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.9rem}
+.skill:hover{border-color:var(--sea);color:var(--sea)}
+.skill.plain{cursor:default}
+.skill.plain:hover{border-color:var(--line);color:inherit}
+
+/* Education timeline */
+.timeline{list-style:none;border-left:2px solid var(--line);margin-left:8px}
+.timeline li{position:relative;padding:0 0 26px 26px}
+.timeline li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--sea)}
+.timeline li.now::before{background:var(--sea)}
+.timeline h3{font-family:var(--display);font-size:1.15rem}
+.timeline .when{color:var(--muted);font-size:.9rem}
+
+/* Contact */
+.contact{margin:80px 0 0;background:var(--ink);color:var(--paper);border-radius:24px;padding:48px 36px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);line-height:1;letter-spacing:-.02em}
+.contact p{opacity:.8;margin-top:12px}
+.contact .list{display:flex;flex-direction:column;gap:10px}
+.contact .btn{justify-content:space-between;background:transparent;color:var(--paper);border-color:color-mix(in srgb,var(--paper) 35%,transparent)}
+.contact .btn.primary{background:var(--sea);color:var(--sea-ink);border-color:var(--sea)}
+footer{color:var(--muted);font-size:.88rem;padding:32px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-weight:600;transition:transform .3s;z-index:40}
+.toast.show{transform:translate(-50%,0)}
+.to-top{position:fixed;right:20px;bottom:20px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:25}
+.to-top.show{opacity:1;pointer-events:auto}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:880px){
+  .hero,.about,.contact{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,1fr)}
+  .burger{display:grid}
+  .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:12px 24px}
+  .menu.open{display:flex}
+  .hero{padding-top:44px}
+  .contact{padding:32px 22px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
-<body class="is-preload">
+<body>
+<div class="progress" id="progress"></div>
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+<header>
+  <div class="container bar">
+    <a class="logo" href="#top">Hadi M.</a>
+    <nav aria-label="Main">
+      <ul class="menu" id="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#lab">Try it</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="bar-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Switch colour theme">◐</button>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
 
-        <!-- Header -->
-        <header id="header" class="alt">
-            <a href="index.html" class="logo"><strong>Hadi Muselmani</strong> <span>Portfolio</span></a>
-            <nav>
-                <a href="#menu">Menu</a>
-            </nav>
-        </header>
+<main class="container" id="top">
 
-        <!-- Menu -->
-        <nav id="menu">
-            <ul class="links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="landing.html">Landing</a></li>
-                <li><a href="generic.html">Generic</a></li>
-                <li><a href="elements.html">Elements</a></li>
-            </ul>
-            <li><a href="projects.html">Projects</a></li>
-        </nav>
-
-        <!-- Banner -->
-        <section id="banner" class="major">
-            <div class="inner">
-                <header class="major"><a href="projects.html" class="button next scrolly">View Projects</a>
-                    
-                    <h1>Hi, I'm Hadi Muselmani</h1>
-                </header>
-                <div class="content">
-                    <img src="hadi image.jpg" alt="Hadi Muselmani" style="width: 180px; border-radius: 100px; margin-bottom: 20px;" />
-                    <p>
-                        I am a second-year Computer Science student at Beirut Arab University.<br>
-                        I'm skilled in Java, C++, HTML/CSS, data structures, and GUI programming.<br>
-                        Passionate about problem-solving, teamwork, and building real-world applications.
-                    </p>
-                    <a href="cv.pdf" class="button" target="_blank">Download CV</a>
-<a href="coverletter.pdf" class="button" target="_blank">Download Cover Letter</a>
-
-                    <h2>Skills</h2>
-                    <ul>
-                        <li>Java, C++, HTML/CSS</li>
-                        <li>Data Structures, Git, GUI Programming</li>
-                        <li>Teamwork, Problem Solving, Communication</li>
-                    </ul>
-
-                    <h2>Projects</h2>
-                    <h3>Student Attendance Management System</h3>
-                    <p>A Java-based console + GUI system using LinkedList, BST, and Queue to manage student attendance.</p>
-
-                    <h3>Learning Style Visual Design</h3>
-                    <p>Created an infographic using Canva to reflect my learning preferences and strategies.</p>
-
-                    <h2>Contact</h2>
-                    <p>Email: <a href="mailto:hmuselmani86@gmail.com">hmuselmani86@gmail.com</a><br>
-                    GitHub: <a href="https://github.com/HadiMuselmani" target="_blank">github.com/HadiMuselmani</a></p>
-
-                    <ul class="actions">
-                        <li><a href="#one" class="button next scrolly">View More</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main -->
-        <div id="main">
-
-            <!-- One -->
-            <section id="one" class="tiles">
-                <article>
-                    <span class="image">
-                        <img src="images/pic01.jpg" alt="" />
-                    </span>
-                    <header class="major">
-                        <h3><a href="landing.html" class="link">Project Gallery</a></h3>
-                        <p>Explore individual project pages (Coming Soon)</p>
-                    </header>
-                </article>
-                <!-- You can add more articles here later -->
-            </section>
-
-            <!-- Two -->
-            <section id="two">
-                <div class="inner">
-                    <header class="major">
-                        <h2>More About Me</h2>
-                    </header>
-                    <p>I’m eager to contribute to software development, data projects, and innovative technology solutions. I'm currently learning full-stack development and continuously expanding my technical toolkit.</p>
-                    <ul class="actions">
-                        <li><a href="landing.html" class="button next">See More</a></li>
-                    </ul>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- Contact -->
-        <section id="contact">
-            <div class="inner">
-                <section>
-                    <form method="post" action="#">
-                        <div class="fields">
-                            <div class="field half">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" />
-                            </div>
-                            <div class="field half">
-                                <label for="email">Email</label>
-                                <input type="text" name="email" id="email" />
-                            </div>
-                            <div class="field">
-                                <label for="message">Message</label>
-                                <textarea name="message" id="message" rows="6"></textarea>
-                            </div>
-                        </div>
-                        <ul class="actions">
-                            <li><input type="submit" value="Send Message" class="primary" /></li>
-                            <li><input type="reset" value="Clear" /></li>
-                        </ul>
-                    </form>
-                </section>
-                <section class="split">
-                    <section>
-                        <div class="contact-method">
-                            <span class="icon solid alt fa-envelope"></span>
-                            <h3>Email</h3>
-                            <a href="mailto:hmuselmani86@gmail.com">hmuselmani86@gmail.com</a>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="contact-method">
-                            <span class="icon solid alt fa-github"></span>
-                            <h3>GitHub</h3>
-                            <a href="https://github.com/HadiMuselmani" target="_blank">github.com/HadiMuselmani</a>
-                        </div>
-                    </section>
-                </section>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <ul class="icons">
-                    <li><a href="https://github.com/HadiMuselmani" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
-                <ul class="copyright">
-                    <li>&copy; Hadi Muselmani</li>
-                    <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </div>
-        </footer>
-
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <p class="hello">Hi, I'm</p>
+      <h1 id="name" aria-label="Hadi Muselmani">Hadi Muselmani</h1>
+      <p class="typed" aria-live="polite">I build <b id="typed"></b><span class="caret" aria-hidden="true"></span></p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/Hhm344" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" data-copy="hhm431@gmail.com">Copy email</button>
+      </div>
+      <p class="place">📍 Beirut, Lebanon · Final-year CS student · Open to remote work</p>
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <div class="lock">
+      <h2>Encrypt my name</h2>
+      <p>Drag the slider to apply a Caesar cipher, the kind my cryptanalysis project breaks automatically.</p>
+      <div class="out" id="lockOut">Hadi Muselmani</div>
+      <input type="range" id="lockRange" min="0" max="25" value="0" aria-label="Cipher shift">
+      <div class="row"><span>Shift: <b id="lockShift">0</b></span><span id="lockState">Plain text</span></div>
+    </div>
+  </section>
 
+  <div class="counters reveal">
+    <div><b data-count="7">0</b><span>projects on GitHub</span></div>
+    <div><b data-count="97.1" data-dec="1" data-suffix="%">0</b><span>phishing detection accuracy</span></div>
+    <div><b data-count="3">0</b><span>programming languages</span></div>
+    <div><b data-count="88">0</b><span>users surveyed for SAWTAK</span></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="block reveal" id="about">
+    <h2 class="title">About me</h2>
+    <div class="about">
+      <div>
+        <p class="lead">I'm a Computer Science student at Beirut Arab University, in my final year. I like problems where security and data meet: catching phishing emails, locking down cloud access, and breaking old ciphers to understand why modern ones work.</p>
+        <p>I've built projects in machine learning, cybersecurity, cloud computing, databases and algorithms, using Python, Java and SQL. All my code and reports are public on GitHub, so you can see exactly how I work.</p>
+      </div>
+      <div class="looking">
+        <h3>What I'm looking for</h3>
+        <ul>
+          <li>Junior developer or graduate roles</li>
+          <li>Cybersecurity and fintech teams</li>
+          <li>Internships and remote positions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="block" id="projects">
+    <h2 class="title reveal">Projects</h2>
+    <p class="sub reveal">Filter by area, search by technology, and open any project for the details.</p>
+
+    <input class="search" id="search" type="search" placeholder="Search, e.g. Java, Azure, SQL" aria-label="Search projects">
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="security" aria-pressed="false">Security</button>
+      <button class="chip" data-filter="ml" aria-pressed="false">Machine learning</button>
+      <button class="chip" data-filter="cloud" aria-pressed="false">Cloud</button>
+      <button class="chip" data-filter="data" aria-pressed="false">Databases</button>
+      <button class="chip" data-filter="algo" aria-pressed="false">Algorithms and systems</button>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+
+    <div class="grid" id="grid">
+
+      <article class="card featured" data-cat="ml security" data-tech="python scikit-learn pandas numpy phishing machine learning">
+        <span class="area">Machine learning · Security</span>
+        <h3>Phishing email detection</h3>
+        <p>A classifier that spots phishing emails aimed at bank customers, so they can be flagged before anyone clicks. You can try a simple version of the idea in the <a href="#lab">Try it</a> section.</p>
+        <div class="stats">
+          <div><b>97.1%</b><small>accuracy</small></div>
+          <div><b>0.97</b><small>ROC AUC</small></div>
+          <div><b>4</b><small>models compared</small></div>
+        </div>
+        <ul class="tags"><li>Python</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li></ul>
+        <div class="details"><div><ul>
+          <li>Cleaned and vectorised the email text, then trained and tuned each model.</li>
+          <li>Compared Naive Bayes, Logistic Regression, SVM and Decision Tree to find the most reliable one.</li>
+          <li>Measured results with accuracy, precision, recall and ROC AUC.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects" target="_blank" rel="noopener">View code on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="ml" data-tech="react node.js supabase postgresql system design ai senior">
+        <span class="area">Senior project · Team of 5</span>
+        <h3>SAWTAK: AI-assisted social platform</h3>
+        <p>A Lebanese platform that encourages constructive public discussion using AI.</p>
+        <ul class="tags"><li>React</li><li>Node.js</li><li>Supabase</li><li>PostgreSQL</li></ul>
+        <div class="details"><div><ul>
+          <li>AI opinion analysis, a recommender that breaks echo chambers, and news claim checking.</li>
+          <li>Worked on requirements, feasibility, UI prototypes and system design.</li>
+          <li>Based on a survey of 88 Lebanese users.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="cloud security" data-tech="azure entra id mfa conditional access kql managed identities zero trust">
+        <span class="area">Cloud security</span>
+        <h3>Zero-trust security on Microsoft Azure</h3>
+        <p>A cloud setup where every sign-in and every request is checked.</p>
+        <ul class="tags"><li>Azure</li><li>Entra ID</li><li>KQL</li></ul>
+        <div class="details"><div><ul>
+          <li>Role-based access control and multi-factor authentication.</li>
+          <li>Location-based Conditional Access policies.</li>
+          <li>Managed Identities instead of stored passwords.</li>
+          <li>KQL queries to detect suspicious activity.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="security" data-tech="java cryptography caesar frequency analysis cipher">
+        <span class="area">Cybersecurity</span>
+        <h3>Automated cryptanalysis of classical ciphers</h3>
+        <p>A Java program that recovers a hidden message without knowing the key.</p>
+        <ul class="tags"><li>Java</li><li>Cryptography</li></ul>
+        <div class="details"><div><ul>
+          <li>Detects which classical cipher was likely used.</li>
+          <li>Uses letter frequency analysis to find the key and decrypt the text.</li>
+          <li>The cipher tool in <a href="#lab">Try it</a> uses the same idea.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects/tree/main/classical-cipher-cryptanalysis" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="data" data-tech="sql server database er modelling normalisation">
+        <span class="area">Databases · Team of 3</span>
+        <h3>Event management database</h3>
+        <p>A relational database for running events from start to finish.</p>
+        <ul class="tags"><li>SQL Server</li><li>ER modelling</li></ul>
+        <div class="details"><div><ul>
+          <li>12 tables: venues, organizers, sessions, speakers, tickets, attendees, payments and sponsors.</li>
+          <li>Designed the ER model and normalised the schema.</li>
+          <li>Wrote reporting queries for sales and attendance.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects/tree/main/event-management-database" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="algo" data-tech="java sorting searching algorithms">
+        <span class="area">Algorithms</span>
+        <h3>Student grade search and sort system</h3>
+        <p>A Java app that stores grades and sorts and searches them efficiently.</p>
+        <ul class="tags"><li>Java</li><li>Sorting</li><li>Searching</li></ul>
+        <div class="details"><div><ul>
+          <li>Enter students and grades, then sort and search the list.</li>
+          <li>Compares how different algorithms perform.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects/tree/main/student-grade-search-sort" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="algo" data-tech="operating systems cpu scheduling">
+        <span class="area">Operating systems</span>
+        <h3>CPU scheduling</h3>
+        <p>How an operating system decides which process runs next.</p>
+        <ul class="tags"><li>Operating systems</li><li>Scheduling</li></ul>
+        <div class="details"><div><ul>
+          <li>Compared scheduling algorithms.</li>
+          <li>Measured waiting and turnaround times.</li>
+        </ul></div></div>
+        <div class="card-foot">
+          <button class="more" aria-expanded="false">Show details <span class="chev">▾</span></button>
+          <a class="gh" href="https://github.com/Hhm344/HadiProjects" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+    </div>
+    <p class="empty" id="empty" hidden>No projects match that search. Try "Java" or clear the filter.</p>
+  </section>
+
+  <!-- LAB -->
+  <section class="block" id="lab">
+    <h2 class="title reveal">Try it yourself</h2>
+    <p class="sub reveal">Two small tools based on my security projects. They run in your browser, and nothing you type is sent anywhere.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Cipher breaker</button>
+      <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Phishing checker</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <label for="cText">Your message</label>
+      <textarea id="cText">Meet me at the library after the lecture tomorrow</textarea>
+      <div class="controls">
+        <label for="cShift" style="margin:0">Shift</label>
+        <input type="number" id="cShift" min="1" max="25" value="7">
+        <button class="btn" id="cEnc">Encrypt</button>
+        <button class="btn primary" id="cCrack">Crack it without the key</button>
+      </div>
+      <div class="result" id="cOut">Press Encrypt, then try cracking it.</div>
+      <p class="note">The cracker tries all 25 shifts and picks the one whose letter frequencies look most like English (chi-squared test).</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <div class="samples">
+        <button class="chip" data-sample="phish">Load a phishing example</button>
+        <button class="chip" data-sample="safe">Load a normal email</button>
+      </div>
+      <label for="pText">Paste an email</label>
+      <textarea id="pText" placeholder="Paste the email text here"></textarea>
+      <div class="controls"><button class="btn primary" id="pCheck">Check this email</button></div>
+      <div id="pResult" hidden>
+        <div class="verdict" id="pVerdict"></div>
+        <div class="meter"><i id="pMeter"></i></div>
+        <ul class="reasons" id="pReasons"></ul>
+      </div>
+      <p class="note">This demo uses simple warning signs, not my trained model. The real project learns these patterns from thousands of emails.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block reveal" id="skills">
+    <h2 class="title">Skills</h2>
+    <p class="sub">Click a skill to see the projects where I used it.</p>
+    <div class="skills">
+      <div class="skill-group"><h3>Programming</h3><div class="chips">
+        <button class="skill" data-skill="python">Python</button>
+        <button class="skill" data-skill="java">Java</button>
+        <button class="skill" data-skill="sql">SQL</button>
+        <button class="skill" data-skill="react">React</button>
+      </div></div>
+      <div class="skill-group"><h3>Machine learning and data</h3><div class="chips">
+        <button class="skill" data-skill="scikit-learn">scikit-learn</button>
+        <button class="skill" data-skill="pandas">pandas</button>
+        <button class="skill" data-skill="postgresql">PostgreSQL</button>
+      </div></div>
+      <div class="skill-group"><h3>Security and cloud</h3><div class="chips">
+        <button class="skill" data-skill="azure">Microsoft Azure</button>
+        <button class="skill" data-skill="kql">KQL</button>
+        <button class="skill" data-skill="cryptography">Cryptography</button>
+        <button class="skill" data-skill="mfa">MFA</button>
+      </div></div>
+      <div class="skill-group"><h3>Tools and languages</h3><div class="chips">
+        <span class="skill plain">Git and GitHub</span>
+        <span class="skill plain">Microsoft Office</span>
+        <span class="skill plain">Arabic</span>
+        <span class="skill plain">English</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block reveal" id="education">
+    <h2 class="title">Education</h2>
+    <ol class="timeline">
+      <li class="now">
+        <h3>Final year, Senior II</h3>
+        <p class="when">2026 · Beirut Arab University</p>
+        <p>Senior project SAWTAK, cloud computing and applied machine learning for cybersecurity.</p>
+      </li>
+      <li>
+        <h3>BSc Computer Science begins</h3>
+        <p class="when">2023 · Beirut Arab University, Beirut, Lebanon</p>
+        <p>Algorithms, databases, operating systems and computer security.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact reveal" id="contact">
+    <div>
+      <h2>Let's work together</h2>
+      <p>I'm based in Beirut, Lebanon, and open to on-site, remote and internship roles. The quickest way to reach me is email.</p>
+    </div>
+    <div class="list">
+      <a class="btn primary" href="mailto:hhm431@gmail.com">Send an email <span>✉</span></a>
+      <button class="btn" data-copy="hhm431@gmail.com">Copy hhm431@gmail.com <span>⧉</span></button>
+      <a class="btn" href="https://github.com/Hhm344" target="_blank" rel="noopener">github.com/Hhm344 <span>↗</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Hadi Muselmani · Beirut, Lebanon</span>
+    <span>Built by hand with HTML, CSS and JavaScript</span>
+  </footer>
+</main>
+
+<button class="icon-btn to-top" id="toTop" aria-label="Back to top">↑</button>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  /* Caesar helpers */
+  function shift(s,k){
+    return s.replace(/[a-z]/gi,function(c){
+      var b = c <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((c.charCodeAt(0)-b+k)%26+26)%26+b);
+    });
+  }
+
+  /* Theme */
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  $('#themeBtn').addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  /* Mobile menu */
+  var menu = $('#menu'), burger = $('#burger');
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  $$('#menu a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); }); });
+
+  /* Scroll progress, back to top, active nav */
+  var sections = $$('#menu a').map(function(a){ return $(a.getAttribute('href')); });
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    $('#progress').style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+    $('#toTop').classList.toggle('show', scrollY > 600);
+    var current = null;
+    sections.forEach(function(s){ if (s && s.getBoundingClientRect().top < 120) current = s.id; });
+    $$('#menu a').forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  $('#toTop').addEventListener('click', function(){ scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); });
+
+  /* Name decrypt on load */
+  var nameEl = $('#name'), plain = 'Hadi Muselmani';
+  function renderName(k){
+    nameEl.innerHTML = '';
+    plain.split(' ').forEach(function(word, wi){
+      var w = document.createElement('span');
+      w.style.whiteSpace = 'nowrap'; w.setAttribute('aria-hidden','true');
+      word.split('').forEach(function(ch){
+        var sp = document.createElement('span');
+        sp.className = 'letter' + (k ? ' off' : '');
+        sp.textContent = shift(ch, k);
+        w.appendChild(sp);
+      });
+      if (wi) nameEl.appendChild(document.createTextNode(' '));
+      nameEl.appendChild(w);
+    });
+  }
+  if (reduce) renderName(0);
+  else { var k = 6; renderName(k); var iv = setInterval(function(){ k--; renderName(k); if (k <= 0) clearInterval(iv); }, 140); }
+
+  /* Typed roles */
+  var roles = ['secure software.', 'machine learning models.', 'cloud security setups.', 'relational databases.', 'tools that break ciphers.'];
+  var typed = $('#typed');
+  if (reduce) typed.textContent = roles[0];
+  else {
+    var ri = 0, ci = 0, del = false;
+    (function tick(){
+      var word = roles[ri];
+      ci += del ? -1 : 1;
+      typed.textContent = word.slice(0, ci);
+      var wait = del ? 35 : 70;
+      if (!del && ci === word.length){ del = true; wait = 1600; }
+      else if (del && ci === 0){ del = false; ri = (ri + 1) % roles.length; wait = 300; }
+      setTimeout(tick, wait);
+    })();
+  }
+
+  /* Hero cipher slider */
+  var lr = $('#lockRange');
+  lr.addEventListener('input', function(){
+    var v = +lr.value;
+    $('#lockOut').textContent = shift(plain, v);
+    $('#lockShift').textContent = v;
+    $('#lockState').textContent = v === 0 ? 'Plain text' : 'Encrypted';
+  });
+
+  /* Counters */
+  function runCounter(el){
+    var target = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
+    if (reduce){ el.textContent = target.toFixed(dec) + suf; return; }
+    var start = null;
+    function step(t){
+      if (!start) start = t;
+      var p = Math.min((t - start) / 1200, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * e).toFixed(dec) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Reveal on scroll */
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        $$('[data-count]', en.target).forEach(runCounter);
+        io.unobserve(en.target);
+      });
+    }, {threshold:.15});
+    $$('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+    $$('[data-count]').forEach(runCounter);
+  }
+
+  /* Project details toggles */
+  $$('.more').forEach(function(b){
+    b.addEventListener('click', function(){
+      var d = b.closest('.card').querySelector('.details');
+      var open = d.classList.toggle('open');
+      b.setAttribute('aria-expanded', open);
+      b.firstChild.textContent = open ? 'Hide details ' : 'Show details ';
+    });
+  });
+
+  /* Filter and search */
+  var cards = $$('#grid .card'), filter = 'all', search = $('#search');
+  function applyFilter(){
+    var q = search.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function(c){
+      var text = (c.dataset.tech + ' ' + c.textContent).toLowerCase();
+      var ok = (filter === 'all' || c.dataset.cat.split(' ').indexOf(filter) > -1) && (!q || text.indexOf(q) > -1);
+      c.hidden = !ok; if (ok) shown++;
+    });
+    $('#count').textContent = 'Showing ' + shown + ' of ' + cards.length + ' projects';
+    $('#empty').hidden = shown > 0;
+  }
+  $$('.filters .chip').forEach(function(ch){
+    ch.addEventListener('click', function(){
+      filter = ch.dataset.filter;
+      $$('.filters .chip').forEach(function(x){ x.setAttribute('aria-pressed', x === ch); });
+      applyFilter();
+    });
+  });
+  search.addEventListener('input', applyFilter);
+  applyFilter();
+
+  /* Skills jump to projects */
+  $$('.skill[data-skill]').forEach(function(s){
+    s.addEventListener('click', function(){
+      filter = 'all';
+      $$('.filters .chip').forEach(function(x){ x.setAttribute('aria-pressed', x.dataset.filter === 'all'); });
+      search.value = s.dataset.skill;
+      applyFilter();
+      $('#projects').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+    });
+  });
+
+  /* Tabs */
+  var tabs = $$('.tab');
+  function selectTab(t){
+    tabs.forEach(function(x){
+      var on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      $('#' + x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+        var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        selectTab(n); n.focus();
+      }
+    });
+  });
+
+  /* Cipher breaker */
+  var EN = [8.2,1.5,2.8,4.3,12.7,2.2,2.0,6.1,7.0,0.15,0.77,4.0,2.4,6.7,7.5,1.9,0.095,6.0,6.3,9.1,2.8,0.98,2.4,0.15,2.0,0.074];
+  function crack(text){
+    var best = {k:0, score:Infinity};
+    for (var k = 0; k < 26; k++){
+      var t = shift(text, -k).toLowerCase(), counts = new Array(26).fill(0), n = 0;
+      for (var i = 0; i < t.length; i++){ var c = t.charCodeAt(i) - 97; if (c >= 0 && c < 26){ counts[c]++; n++; } }
+      if (!n) return null;
+      var chi = 0;
+      for (var j = 0; j < 26; j++){ var exp = EN[j] / 100 * n; chi += Math.pow(counts[j] - exp, 2) / exp; }
+      if (chi < best.score) best = {k:k, score:chi};
+    }
+    return best;
+  }
+  $('#cEnc').addEventListener('click', function(){
+    var k = Math.max(1, Math.min(25, parseInt($('#cShift').value, 10) || 3));
+    var enc = shift($('#cText').value, k);
+    $('#cText').value = enc;
+    $('#cOut').textContent = 'Encrypted with shift ' + k + ':\n' + enc + '\n\nNow press "Crack it without the key".';
+  });
+  $('#cCrack').addEventListener('click', function(){
+    var text = $('#cText').value, r = crack(text);
+    if (!r){ $('#cOut').textContent = 'Type some text with letters first.'; return; }
+    var steps = 0, out = $('#cOut');
+    if (reduce){ out.textContent = 'Most likely shift: ' + r.k + '\n' + shift(text, -r.k); return; }
+    var iv = setInterval(function(){
+      out.textContent = 'Trying shift ' + steps + '…\n' + shift(text, -steps);
+      steps++;
+      if (steps > 25){ clearInterval(iv); out.textContent = 'Cracked. Most likely shift: ' + r.k + '\n' + shift(text, -r.k); }
+    }, 45);
+  });
+
+  /* Phishing checker */
+  var samples = {
+    phish: 'Subject: URGENT: Your account has been suspended\n\nDear Customer,\n\nWe detected unusual activity on your bank account. Your account will be closed within 24 hours unless you verify your identity immediately.\n\nClick here to confirm your password and card number: http://secure-bank-verify.xyz/login\n\nBank Security Team',
+    safe: 'Subject: Notes from Tuesday\'s lecture\n\nHi Hadi,\n\nThanks for sharing your notes from the databases lecture. I added a section on normalisation. Could we meet on Thursday at the library to review before the exam?\n\nSee you then,\nSara'
+  };
+  $$('[data-sample]').forEach(function(b){
+    b.addEventListener('click', function(){ $('#pText').value = samples[b.dataset.sample]; $('#pCheck').click(); });
+  });
+  var rules = [
+    {re:/\b(urgent|immediately|within 24 hours|act now|final notice|as soon as possible)\b/i, pts:20, why:'Creates urgency to rush you'},
+    {re:/\b(suspend(ed)?|locked|closed|unusual activity|unauthori[sz]ed)\b/i, pts:15, why:'Threatens your account'},
+    {re:/\b(password|pin|card number|cvv|social security|login details)\b/i, pts:25, why:'Asks for sensitive information'},
+    {re:/\b(verify|confirm) (your )?(identity|account|password|details)\b/i, pts:15, why:'Asks you to verify your account'},
+    {re:/click (here|the link|below)/i, pts:10, why:'Pushes you to click a link'},
+    {re:/https?:\/\/[^\s]*\.(xyz|top|tk|ru|info|click|zip)\b/i, pts:20, why:'Link uses a suspicious domain'},
+    {re:/https?:\/\/\d{1,3}(\.\d{1,3}){3}/i, pts:20, why:'Link points to a raw IP address'},
+    {re:/\b(dear (customer|user|client|member))\b/i, pts:10, why:'Generic greeting instead of your name'},
+    {re:/\b(winner|prize|lottery|gift card|free money|claim your)\b/i, pts:20, why:'Offers a prize or reward'}
+  ];
+  $('#pCheck').addEventListener('click', function(){
+    var t = $('#pText').value.trim(), list = $('#pReasons');
+    list.innerHTML = '';
+    $('#pResult').hidden = false;
+    if (!t){ $('#pVerdict').textContent = 'Paste an email first.'; $('#pMeter').style.width = '0'; return; }
+    var score = 0;
+    rules.forEach(function(r){
+      if (r.re.test(t)){ score += r.pts; var li = document.createElement('li'); li.textContent = '⚠ ' + r.why; list.appendChild(li); }
+    });
+    score = Math.min(score, 100);
+    var m = $('#pMeter');
+    m.style.width = Math.max(score, 4) + '%';
+    m.style.background = score >= 50 ? 'var(--warn)' : score >= 25 ? '#D49A2A' : 'var(--cedar)';
+    $('#pVerdict').textContent = score >= 50 ? 'Likely phishing (' + score + '/100)' : score >= 25 ? 'Be careful (' + score + '/100)' : 'Looks safe (' + score + '/100)';
+    if (!list.children.length){ var li = document.createElement('li'); li.className = 'good'; li.textContent = '✓ No common warning signs found'; list.appendChild(li); }
+  });
+
+  /* Copy email + toast */
+  var toast = $('#toast'), tt;
+  function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('show'); }, 2000); }
+  $$('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = b.dataset.copy;
+      if (navigator.clipboard) navigator.clipboard.writeText(v).then(function(){ showToast('Email copied'); }, function(){ showToast(v); });
+      else showToast(v);
+    });
+  });
+})();
+</script>
 </body>
 </html>
